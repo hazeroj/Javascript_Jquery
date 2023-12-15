@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+body {
+    background-color: #f0bf20;
+}
+
+div img {
+    width: 50px;
+    display: block;
+    margin: 0px auto;
+}
+
+div dl {
+    line-height: 30px;
+    ;
+    margin: 10px 0px;
+    background-color: #fff;
+}
+
+dl dt {
+    margin-left: 2%;
+}
+
+/* dl dt::after {width: 220px; height:5px;color: #f00;content:"";left:0px; }*/
+
+dl dd {
+    margin-left: 3%;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
