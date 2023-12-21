@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_자바스크립트 기초_객체(object)</title>
+    <style>
+        span {
+            font-weight: bold;
+            font-size: 18px;
+            color: rgb(255, 62, 62);
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>02_자바스크립트 기초_객체(object)</h2>
+    <dl>
+        <dt>객체(object)란?</dt>
+        <dd>1. 이름(key)과 값(value)로 구성된 속성을 담아놓은 컨테이너이다.</dd>
+        <dd>2. 객체에 변수를 선언하면 속성(property)을 사용할 수 있다. 예)document.getElementById('아이디명')</dd>
+        <dd>3. 객체에 함수를 선언하면 메서드(method)를 사용할 수 있다. 예)document.write('내용');</dd>
+    </dl>
+
+    <h3>1. 객체의 종류</h3>
+    <p>내장객체 - 자바스크립트에서 미리 정해놓은 객체로 다양한 종류가 있다.</p>
+    <ul>
+        <li>수학객체(Math)</li>
+        <li>날짜(data)객체</li>
+        <li>배열(array)객체</li>
+        <li>문자열(string)객체</li>
+        <li>문서(document)객체</li>
+        <li>윈도우(wilondow)객체</li>
+    </ul>
+
+    <p>사용자 정의 객체 - 내장객체를 제외한 사용자가 원하는 내용을 토대로 직접 객체를 선언하여 작성하는 방법</p>
+
+    <div>
+        <fieldset>
+            <p><label for="company"> 제조회사 : <input type="text" id="company"></label></p>
+            <p><label for="model"> 모델명 : <input type="text" id="model"></label></p>
+            <p><label for="color"> 색상명 : <input type="text" id="color"></label></p>
+            <input type="button" value="입력한 정보 출력하기( 신청하기 or 주문하기 )" id="order_btn">
+        </fieldset>
+    </div>
+
+    <!-- 내용출력하는 곳 -->
+    <p id="result"></p>
+
+
+
+    <!-- 사용자 정의 객체 두번째  -->
+    <fieldset>
+        <legend>개인정보입력</legend>
+        <p><label for="firstName"> 성 : </label><input type="text" id="firstName" maxlength="1" placeholder="성을 입력하세요">
+        </p>
+        <p><label for="lastName"> 이름 : </label><input type="text" id="lastName" maxlength="4" placeholder="이름을 입력하세요">
+        </p>
+        <p><label for="age"> 나이 : </label><input type="number" id="age"></p>
+        <p><label for="height"> 키 : </label><input type="number" id="height"></p>
+        <p><label for="weight"> 몸무게 : </label><input type="number" id="weight"></p>
+        <p><input type="button" value="신청완료" id="res_btn1"> &nbsp;&nbsp;
+            <input type="reset" value="입력취소" id="res_btn2">
+        </p>
+    </fieldset>
+
+    <!-- 내용출력  -->
+    <p id="check"></p>
+
+    <script>
+        // 1. 사용자 정의 객체
+        let phone = new Object();
+        const btn = document.getElementById('order_btn')
+
+        btn.addEventListener('click', function () {
+
+            const c = document.getElementById('company').value;
+            const m = document.getElementById('model').value;
+            const color = document.getElementById('color').value;
+            // phone.company = '애플';
+            phone.company = c;
+            // phone.model = 'iphone13 mini'
+            phone.model = m
+            // phone.color = 'pink'
+            phone.color = color
+
+            // 2. 객체를 호출하여 내용 출력하기
+            document.getElementById('result').innerHTML = (`<p>나의 핸드폰 제조회사는'<span> ${phone.company} </span>'이고 모델명은 '<span> ${phone.model} </span>'이며, 
+                색상은 '<span> ${phone.color} </span>'입니다.</p>`)
+        })
+
+
+        //사용자 정의 객체 만들기 두번째 방법
+        let person = {
+            firstName: '홍',
+            lastName: '길동',
+            age: '23',
+            height: '175',
+            weight: '70'
+        }
+        const event = document.getElementById('event_btn')
+
+        //문제 위 두번째 객체 생성 방법을 통해서 개인정보 입력양식을 만들어 사용자가 '성' , '이름' , '나이', '키', ' 몸무게'를 입력하고 
+        // '신청완료'를 누르면 객체정보가 출력되게 하기
+        // 출력내용 예시 나의 이름은 홍길동이고 나이는 23세이며 키는 175cm 몸무게는 50kg입니다.
+
+        // event.addEventListener('click', function () {
+        //     const f = document.getElementById('firstName').value;
+        //     const l = document.getElementById('lastName').value;
+        //     const a = document.getElementById('age').value;
+        //     const h = document.getElementById('height').value;
+        //     const w = document.getElementById('weight').value;
+        //     firstName = f
+        //     lastName = l
+        //     age = a
+        //     height = h
+        //     weight = w
+
+        //     // 객체를 호출하여 내용 출력하기 
+        //     document.getElementById('check').innerHTML = (`<p>나의 이름은 <span>${firstName} ${lastName}</span>이고 나이는 <span>${age}</span>세이며, 
+        //         키는 <span>${height}</span>cm 몸무게는 <span>${weight}</span>kg입니다.</p>`)
+
+
+        //     function init() {
+        //         f.value = "";
+        //     }
+        // })
+
+        // 선생님이랑 풀기
+        let f_n, last_n, age, he, we; //변경되는 정보
+        const r_btn1 = document.getElementById('res_btn1'); // 정보입력완료버튼
+        const r_btn2 = document.getElementById('res_btn2'); // 취소버튼
+        const res2 = document.getElementById('check'); //출력하는 부분변수
+
+            //정보입력완료 버튼을 클릭시 각각 해당 정보를 객체 속성에 담아서 출력한다.
+            r_btn1.addEventListener('click',function(){
+                
+                //let a = new Object();
+                f_n = document.getElementById('firstName').value;
+                last_n = document.getElementById('lastName').value;
+                age = document.getElementById('age').value;
+                he = document.getElementById('height').value;
+                we = document.getElementById('weight').value;
+                
+                let person2 = {
+            firstName: f_n,
+            lastName: last_n,
+            age: age,
+            height: he,
+            weight: we
+        }
+
+        res2.innerHTML=`나의 이름은 ${person2.firstName}${person2.lastName} 이고 나이는 ${person2.age}세이며, 
+        키는 ${person2.height} cm 몸무게는 ${person2.weight}kg입니다..`
+    })
+
+    //입력취소하기 값을 없앤다.
+    r_btn2.addEventListener('click',function(){
+        f_n = document.getElementById('firstName').value="";
+                last_n = document.getElementById('lastName').value="";
+                age = document.getElementById('age').value="";
+                height = document.getElementById('height').value="";
+                weight= document.getElementById('weight').value="";
+                res2.innerHTML="";
+    })
+    </script>
+</body>
+
+</html>
