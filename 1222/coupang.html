@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제_쿠팡이미지</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <article id="coupang">
+        <h2>hot! trend <br> 추천 광고상품</h2>
+        <input type="button" value=">" id="right_btn">
+        <input type="button" value="<" id="left_btn">
+        <img src='./images3/product01.png' alt="쿠팡이미지" id="product">
+
+    </article>
+
+    <script>
+        // 1.배열 객체 선언하기
+        let img = ['product01','product02','product03','product04','product05','product06','product07','product08','product09','product10','product11','product12','product13','product14','product15','product16','product17','product18']
+        let r_btn = document.getElementById('right_btn')
+        let l_btn = document.getElementById('left_btn')
+        let n = Math.ceil(Math.random()+3)
+        
+
+        // document.write('<img src="./images3/product01.png" alt="쿠팡이미지">')
+            // document.getElementById('coupang').innerHTML='<img src="./images3/'+img [n]+'.jpg" alt="">'
+
+        // r_btn.addEventListener('click',function(){
+        //         document.getElementById('product').src='./images3/'+img[n]+'jpg'})
+        // let num = [Math.ceil(Math.random()+1)]
+        // document.getElementById('product').src='./images3/'+r_img[n]+'jpg';
+
+        r_btn.addEventListener('click',function(){
+            document.getElementById('product').src="./images3/"+img[n]  + '.jpg'
+            if(n == 0 || 7 || 12 || 14) {
+                + '.png'
+            } else { + '.jpg'}
+        })
+
+        // l_btn.addEventListener('click',function(){
+        //     document.getElementById('product').src="./images3/"+r_img[num]
+        //     if(num == '01' || '08' || '13' || '15') {
+        //         + '.png'
+        //     } else { + '.jpg'}
+        // })
+    </script>
+</body>
+</html>

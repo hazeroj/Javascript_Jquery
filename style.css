@@ -35,8 +35,14 @@ dl dt {
 
 /* dl dt::after {width: 220px; height:5px;color: #f00;content:"";left:0px; }*/
 
-dl dd {
-    margin-left: 3%;
+dl dd  a{
+    text-indent: 3%;
+    display: block;
+}
+
+dl dd :hover {
+    color: #f0bf20;
+    font-weight: bold;
 }
 
 a {
