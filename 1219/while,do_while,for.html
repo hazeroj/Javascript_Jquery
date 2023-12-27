@@ -81,21 +81,22 @@
                 continue;
             }
 
-                if(31<day&&day<=35){
-                    document.write('<td>&nbsp;</td>');
-                    continue;
-                }
+            // 조건문을 활용하여 31초과 35까지 공백으로 표시하기
+            if(31<day&&day<=35){
+                document.write('<td>&nbsp;</td>');
+                continue;
+            }
 
-                if(day%7==0){
-                    document.write('<td>'+day+'</td>')
-                    document.write('</tr>');
-                    continue;
-                }
+            if(day%7==0){
+                document.write('<td>'+day+'</td>')
+                document.write('</tr>');
+                continue;
+            }
 
-                document.write('<td>'+day+'</td>');
+            document.write('<td>'+day+'</td>');
         }   
+
         document.write('</table>');
-        // 조건문을 활용하여 31초과 35까지 공백으료 표시하기
     </script>
 </body>
 </html>
