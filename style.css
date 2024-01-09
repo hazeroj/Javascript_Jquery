@@ -19,7 +19,7 @@ div {
 
 div img {height: 70px;
     display: block;
-    margin: 0px auto;
+    margin: 10px auto;
 }
 
 div dl {
@@ -40,12 +40,19 @@ dl dd  a{
     display: block;
 }
 
-dl dd :hover {
+.java_wrap dl dd :hover {
     color: #f0bf20;
     font-weight: bold;
+    background-color: #0167ad;
 }
 
 a {
     text-decoration: none;
     color: #333;
+}
+
+.jquery_wrap dl dd :hover {
+    color: #0167ad;
+    font-weight: bold;
+    background-color: #f0bf20;
 }
