@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 문서객체조작_01클래스조작</title>
+    <!-- 폰트어썸연결 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css">
+    <style>
+        .box {
+            background-color: #ccc;
+            height: 200px;
+            width: 400px;
+            border: 3px double #f00;
+        }
+
+        .act {
+            background-color: #ff0;
+        }
+
+        aside {
+            position: fixed;
+            right: 0px;
+            top: 0px;
+        }
+
+        aside .fas {
+            position: absolute;
+            top: 47%;
+            left: -26px;
+            font-size: 1.5rem;
+            color: #666;
+            border: 1px solid #555;
+            padding: 5px;
+        }
+
+        .on1 {
+            right: -100px;
+        }
+
+        .on {
+            transform: rotate(180deg) !important;
+        }
+
+        /* 탭메뉴, 콘트롤 btn서식 */
+
+        .tab_mnu,
+        .c_btn {
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .tab_mnu li,
+        .c_btn li {
+            list-style: none;
+        }
+
+        .tab_mnu li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .c_btn li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+
+        .on2 {
+            background-color: #ff0;
+        }
+    </style>
+    <!-- 제이쿼리 라이브러리 연결하기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btn01').click(function () {
+                $('.box').addClass('act')
+            })
+            $('#btn02').click(function () {
+                $('.box').removeClass('act')
+            })
+            $('#btn03').click(function () {
+                $('.box').toggleClass('act')
+            })
+            // hasCass해당 클래스가 있는지/없는지 유무를 알려준다, 조건식을 써야한다.
+            $('#btn04').click(function () {
+                if ($('.box').hasClass('act') == true) {
+                    alert('.box에 act클래스가 존재합니다.')
+                } else {
+                    alert('.box에 act클래스가 존재하지 않습니다.')
+                }
+            })
+
+            $('aside .fas').click(function () {
+                $(this).toggleClass('on')
+                $('aside').toggleClass('on1')
+            })
+
+            // 탭메뉴
+
+            $('.tab_mnu li a').click(function () {
+                $('.tab_mnu li a').removeClass('on2');
+                $(this).addClass('on2');
+
+                return false; //제이쿼리 문법에서는 a요소의 #기능을 무력화시킴
+            });
+            
+            //우측 aside메뉴
+
+            $('.c_btn li').click(function () {
+                $('.c_btn li').removeClass('on2');
+                $(this).addClass('on2');
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>제이쿼리 문서객체조작_01클래스조작</h2>
+    <p>사용자가 선택한 요소에 클래스를 추가하거나 삭제, 또는 클래스가 없는 요소를 찾아서 서식을 적용하는 메소드이다.</p>
+
+    <ul>
+        <li>addClass() - 선택한 요소에 클래스 서식을 추가</li>
+        <li>removeClass() - 선택한 요소에 클래스 서식을 제거</li>
+        <li>toggleClass(); - 선택한 요소에 클래스 서식을 추가/제거</li>
+        <li>hasClass(); - 선택한 요소에 해당 클래스 이름이 있는지 여부를 판단하여 true, false값으로 표시</li>
+        <li>class(); - 사용자가 선택한 요소에 서식을 적용</li>
+    </ul>
+
+    <h3>실습하기</h3>
+    <p>버튼을 클릭하면 box요소에 서식을 추가/제거하기</p>
+    <div class="box">
+        아래 버튼을 누르면 현재 박스에 서식을 적용하거나 제거하기
+    </div>
+    <input type="button" value="addClass 적용하기" id="btn01">
+    <input type="button" value="removeClass 적용하기" id="btn02">
+    <input type="button" value="toggleClass 적용하기" id="btn03">
+    <input type="button" value="hasClass 적용하기" id="btn04">
+
+    <h3>2. 삼성화재 오른쪽 고정배치된 'quick menu'구현하기</h3>
+    <aside>
+        <i class="fas fa-angle-right"></i>
+        <img src="./images/quick.jpg" alt="퀵메뉴">
+    </aside>
+
+
+    <h3>3.콘트롤 버튼 + 탭메뉴 서식 구현하기</h3>
+
+    <ul class="tab_mnu">
+        <li><a href="javascript:void(0);" title="독박투어" class="on2">독박투어</a></li>
+        <li><a href="#" title="떳다 캡틴킴">떳다 캡틴킴</a></li>
+        <li><a href="#" title="배틀트립">배틀트립</a></li>
+        <li><a href="#" title="클럽메드 미니클럽">클럽메드 미니클럽</a></li>
+    </ul>
+
+    <ul class="c_btn">
+        <li class="on2">&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+    </ul>
+</body>
+
+</html>

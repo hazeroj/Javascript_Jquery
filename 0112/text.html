@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 제이쿼리 문서객체(DOM)조작_내용변경 메서드</title>
+    <!-- 제이쿼리 라이브러리 연결하기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <style>
+        article {
+            height: 485px;
+            width: 630px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 51% 49%;
+            grid-template-areas:
+                'h h'
+                'i n';
+        }
+
+        article>h2 {
+            grid-area: h;
+        }
+
+        article>nav {
+            grid-area: n;
+        }
+
+        article ul {
+            padding: 0px;
+            margin: 0px;
+            background-color: rgb(36, 36, 255);
+            height: 100%;
+        }
+
+        article ul>li {
+            list-style: none;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        article a {
+            text-decoration: none;
+            color: #333;
+            line-height: 60px;
+            color: #fff;
+        }
+
+        article a:hover {
+            text-decoration: underline;
+        }
+
+        article>img {
+            grid-area: i;
+            width: 100%;
+            height: 452px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>01 제이쿼리 문서객체(DOM)조작_내용변경 메서드</h2>
+    <p>문서객체조작이란? DOM(문서객체모델), HTML문서안에서 모든 요소들과 내용들을 제이쿼리를 사용하여 글자를 변경하거나 추가, 삭제, 속성값을 변경할 수 잇는 것을 말한다.</p>
+    <p>https://oscarotero.com/jquery/페이지의 API에서 'ATTRIBUTES', 'MANIPULATION' 카테고리에서 메소드 확인가능.</p>
+
+    <h3>문서내용을 변경하기 위한 메서드</h3>
+    <ul>
+        <li>$('대상').text(); - 텍스트 내용 변경</li>
+        <li>$('대상').html(); - 텍스트 내용변경(태그적용 가능)</li>
+        <li>$('대상').attr(); - 속성변경</li>
+        <li>$('대상').val(); - 폼태그 value 값 변경</li>
+        <li>$('대상').empty(); - 내용지우기</li>
+        <li>$('대상').remove(); - 요소지우기</li>
+        <li>$('대상').addClass; - 클래스 추가하기</li>
+        <li>$('대상').removeClass(); - 클래스 제거하기</li>
+        <li>$('대상').hasClass(); - 클래스 존재여부확인</li>
+        <li>$('대상').toggleClass(); - 클래스 적용/미적용</li>
+        <li>$('대상').appendTo(); - 부모내용 마지막 위치로 이동하기</li>
+        <li>$('대상').prependTo(); - 부모내용 처음 위치로 이동하기</li>
+    </ul>
+
+    <h3>1. 자바스크립트로 내용 삽입하여 출력하기</h3>
+    <p id="p01">자바스크립트를 활용하여 이곳에 내용이 변경됩니다.</p>
+
+    <h3>2. 제이쿼리로 내용 삽입하여 출력하기</h3>
+    <p id="p02">제이쿼리로 내용을 변경합니다.</p>
+    <p id="p03">베이쿼리로 html내용을 추가합니다.</p>
+
+    <h3>3. attr()메서드로 이미지 갤러리 구현하기</h3>
+
+    <article class="top_sale">
+        <h2>모두투어 판매랭킹 No.1</h2>
+        <nav>
+            <ul>
+                <li><a href="./images/tour01.jpg" title="두바이">&#91;두바이&#93; 아부다비 6/7일 &#91;기간한정특가&#93;</a></li>
+                <li><a href="./images/tour02.jpg" title="북해도 3대온천">&#91;북해도 3대온천&#93; 맛있는 온천 4일</a></li>
+                <li><a href="./images/tour03.jpg" title="코타키나발루">&#91;코타키나발루&#93; 초특급 수트라하버 5일</a></li>
+                <li><a href="./images/tour04.jpg" title="괌">&#91;괌&#93; PIC 리조트 4/5일</a></li>
+            </ul>
+        </nav>
+        <img src="./images/tour01.jpg" alt="아부다비" id="tour_img">
+    </article>
+    <script>
+        //1. 자바스크립트 내용을 삽입(출력)하기
+        // document.getElementById('p01').innerHTM="<span>태그포함하여 내용추가</span>" //태그포함 내용추가
+        document.getElementById('p01').innerText = "텍스트 내용추가" //텍스트 내용추가
+
+        $(document).ready(function () {
+            $('#p02').text('쿠팡 데이터 입력');
+            $('#p03').html('<a htrf="http://www.naver.com" title="네이버">네이버</a>')
+
+            // attr()메서드로 이미지 갤러리 구현하기
+
+            // 1. 사용자가 메뉴에 마우스 오버시 htrf속성값을 변수에 담는다.
+            let img_src;
+            let top_sale_mnu = $('.top_sale nav li a')
+
+            top_sale_mnu.mouseenter(function () {
+                img_src = $(this).attr('href');
+                console.log(img_src)
+
+
+                // 2. 변수에 담겨진 이미지 주소 값을 보여질 이미지 #tour_img src속성값에 대입하여 이미지가 변경되도록 한다.
+                $('#tour_img').attr('src', img_src)
+                
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>

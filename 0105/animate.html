@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. 애니메이트메서드 사용법과 응용</title>
+    <style>
+        #box01 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(46, 194, 145);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            position: relative;
+            color: #fff;
+            left: 0px;
+            top: 0px;
+        }
+
+        #btn01,
+        #btn02 {
+            margin: 10px;
+            background: transparent;
+            padding: 10px;
+            border-color: rgb(47, 170, 129);
+            box-shadow: -2px -2px 5px #ccc inset;
+            cursor: pointer;
+        }
+
+        #btn01:hover,
+        #btn02:hover {
+            background-color: rgb(47, 170, 129);
+            box-shadow: none;
+            color: #fff;
+        }
+
+        #kakao {
+            display: block;
+            position: relative;
+            left: 0px;
+        }
+
+        #btn03,
+        #btn04,
+        #btn05,
+        #btn06 {
+            border: none;
+            padding: 8px;
+            margin: 5px;
+            background-color: rgb(244, 177, 29);
+            color: #fff;
+            box-shadow: 2px 2px 6px #ccc;
+        }
+
+        .list01 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .list01>li {
+            background-color: #00f;
+            position: relative;
+            left: 0px;
+            margin-bottom: 20px;
+            width: 50px;
+            height: 50px;
+            list-style: none;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .bemin {
+            position: relative;
+            display: block;
+        }
+    </style>
+    <!-- 제이쿼리 라이브러리 연결하기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $('document').ready(function () { //문서가 로딩이끝나면 제이쿼리를 실행한다.
+
+            // 1. 애니메이션 시작 버튼 누르면 box 01 이 애니메이션 적용되어 움직이게 하기
+            $('#btn01').click(function () {
+                $('#box01').animate({ 'left': '50px', 'top': '-50px' }, 1000) //왼쪽 에서 오른쪽으로 500px 1초동안 이동한다.
+                $('#box01').animate({ 'left': '100px', 'top': '0px' }, 1000)
+                $('#box01').animate({ 'left': '150px', 'top': '-50px' }, 1000)
+                $('#box01').animate({ 'left': '200px', 'top': '0px' }, 1000)
+                $('#box01').animate({ 'left': '250px', 'top': '-50px' }, 1000)
+                $('#box01').animate({ 'left': '300px', 'top': '0px' }, 1000, function () {
+                    $('#box01').animate({ 'left': '0px' }, 2000)
+                })
+            })
+            //2. 애니메이션 종료 버튼을 누르면 box01애니메이션 멈추기
+            $('#btn02').click(function () {
+                $('#box01').stop(); //박스에 함수를 제거하여 멈추게한다.
+            })
+
+            // 50픽셀씩 이동하기
+            let n = 50;
+
+            $('#btn03').click(function () { //위로이동
+                $('#kakao').animate({ 'top': '-=' + n }, 500)
+            })
+            $('#btn04').click(function () { //아래로이동
+                $('#kakao').animate({ 'top': '+=' + n }, 500)
+            })
+            $('#btn05').click(function () { // 우로이동
+                $('#kakao').animate({ 'left': '+=' + n }, 500)
+            })
+            $('#btn06').click(function () { //좌로이동
+                $('#kakao').animate({ 'left': '-=' + n }, 500)
+            })
+            // 대입연산자를 사용하면 연속하는 애니메이션 사용가능 =, +=, -= ()
+
+            let list = $('.list01>li');
+            list.hover(function () { //목록에 마우스 오버시== mouseover, mouseenter
+                this.animate({ 'left': '500px' }, 500);
+            }, function () {
+                this.animate({ 'left': '0px' }, 500);
+                //마우스 아웃시 == mouseenter, mouseleave
+            })
+
+
+            // 배민
+
+            $('#order').click(function () {
+                $('#bemin01').animate({ 'left': '1000px' }, 1500, 'linear'); //기본속도(일정)
+                $('#bemin02').animate({ 'left': '1000px' }, 1500, 'easeOutQuint');
+                $('#bemin03').animate({ 'left': '1000px' }, 1500, 'easeOutBounce');
+                $('#bemin04').animate({ 'left': '1000px' }, 1500, 'easeOutElastic');
+                $('#bemin05').animate({ 'left': '1000px' }, 1500, 'easeOutExpo');
+            });
+        }); 
+    </script>
+</head>
+
+<body>
+    <h2>01. 애니메이트메서드 사용법과 응용</h2>
+    <p>제이쿼라에서는 효과 애니메이트 메소드를 사용하여 사용자가 선택한 요소를 다양하게 움직이게 만들 수 잇다.</p>
+
+    <h3>1. animate문법</h3>
+    <p>$('사용자가 선택한 대상').animate({'속성':'값'},시간,가속도,콜백함수);</p>
+    <ul>
+        <li>'속성':'값'은 css속성과 값을 말하며, '값'에는 자바스크립트 변수나 연산자를 활용할 수 있다.</li>
+        <li>시간 : 1/1000초 값을 사용할 수 있으며 1초를 의미함.</li>
+        <li>콜백함수 : callbackfunction으로서 애니메이션 동작이 끝난 뒤에 다음 동작을 이어서 실행하고자 할 때 사용한다.</li>
+    </ul>
+
+    <h3>2. animate메소드를 사용하여 박스 움직이게 하기</h3>
+    <div id="box01">원</div>
+    <input type="button" value="애니메이션 시작" id="btn01">
+    <input type="button" value="애니메이션 종료" id="btn02">
+
+    <h3>3. 자바스크립트 절대값을 활용하여 캐릭터 상, 하, 좌, 우 움직이기</h3>
+    <img src="./images/KakaoTalk.gif" alt="Tube" id="kakao">
+    <input type="button" value="위로 이동하기" id="btn03">
+    <input type="button" value="아래로 이동하기" id="btn04">
+    <input type="button" value="오른쪽으로 이동하기" id="btn05">
+    <input type="button" value="왼쪽으로 이동하기" id="btn06">
+    <h3>4. box에 마우스 오버시 순차적으로 애니메이션 적용하기</h3>
+
+    <ul class="list01">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <h3>5. easing값을 사용하여 속도감있는 애니메이션 적용하기</h3>
+    <p>jquery.com사이트의 왼쪽 상단의 ui탭을 클릭하고 왼쪽 easing메뉴에서 jquery.ui 라이브러리를 찾아 연결하여 사용한다.</p>
+    <img src="./images/easing.png" alt="속도감주기"><br>
+
+    <img src="./images/baemin.png" alt="배달하기" id="bemin01" class="bemin"><br>
+    <img src="./images/baemin.png" alt="배달하기" id="bemin02" class="bemin"><br>
+    <img src="./images/baemin.png" alt="배달하기" id="bemin03" class="bemin"><br>
+    <img src="./images/baemin.png" alt="배달하기" id="bemin04" class="bemin"><br>
+    <img src="./images/baemin.png" alt="배달하기" id="bemin05" class="bemin"><br>
+
+    <input type="button" value="배달 주문~~" id="order">
+
+</body>
+
+</html>

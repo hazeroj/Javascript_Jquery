@@ -1,0 +1,169 @@
+!
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제_제이쿼리 문서객체 내용추가 메서드를 활용한 실시간 검색순위</title>
+    <style>
+        .box {
+            width: 350px;
+            background: #ccc;
+        }
+
+        .boxIn {
+            padding: 20px;
+        }
+
+        .boxIn>h3 {
+            border-bottom: 2px solid #00f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .boxIn ul {
+            height: 150px;
+            border: 1px solid #f00;
+        }
+
+        .boxIn ul li {
+            list-style: none;
+        }
+
+        .boxIn a {
+            display: block;
+            font-size: 13px;
+            line-height: 2rem;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .boxIn ul li:first-child a {
+            font-size: 18px;
+            line-height: 2rem;
+            font-weight: bold;
+        }
+
+        .boxIn ul li:nth-child(2) a {
+            font-size: 16px;
+            line-height: 1.6rem;
+            margin-top: 4px;
+        }
+
+        /* 실습예제 네이버 뉴스 */
+
+        .naver_news  a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+
+        .naver_news {
+            width: 995px;
+            height: 26px;
+            padding: 20px 12px;
+            background-color: #e4e4e4;
+            display: flex;
+            justify-content: space-around;
+            overflow: hidden;
+        }
+        .naver_news *:hover{text-decoration: underline;}
+        select {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1rem;
+            line-height: 1.4rem;
+            display: inline;
+        }
+
+        .news_list {margin: 0px;
+            padding: 0px;; transform: translateY(-20px);}
+
+        .news_list li {
+            list-style: none;
+            line-height: 66px;
+            display: block;
+        }
+
+        .naver_news>a:last-child {font-weight: 600;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //시간객체
+            //setInterval(함수명, 반복할시간); - 일정시간 마다 함수나 내용을 반복호출하여 실행
+            //setTimeout(내용, 반복할시간); - 일정시간 지난 후 함수를 호출하여 한번 내용실행
+
+            setInterval(function () {
+                // console.log('내용 반복출력')
+
+                // 변수선언
+                let boxIn = $('.boxIn ul'); //목록태그의 부모요소
+                let boxRow = $('.boxIn ul li:first'); // boxRow변수의 첫번째 li요소를 변수에 저장
+
+                let ARea = () => { //es6문법에서 추가된 화살표 함수
+                    boxRow.appendTo(boxIn).show(300); // 첫째 li태그를 ul태그의 마지막 요소에 자리배치
+                }
+
+                boxRow.hide(300, ARea); //boxRow요소가 숨겨지고나면 ARea에 저장된 콜백함수가 실행됨.
+
+            }, 3000)
+
+            setInterval(function(){
+                let list = $('.news_list')
+                let news_head = list.find('li:first-child')
+                let $duration = 400
+
+                let news = ()=>{
+                    news_head.appendTo(list).show($duration)
+                }
+
+                news_head.hide($duration,news)
+
+            },4000)
+        })
+    </script>
+</head>
+
+<body>
+    <h2>실습예제_제이쿼리 문서객체 내용추가 메서드를 활용한 실시간 검색순위</h2>
+    <div class="box">
+        <div class="boxIn">
+            <h3>실시간 검색순위</h3>
+            <ul>
+                <li><a href="#" title="">keyword1</a></li>
+                <li><a href="#" title="">keyword2</a></li>
+                <li><a href="#" title="">keyword3</a></li>
+                <li><a href="#" title="">keyword4</a></li>
+                <li><a href="#" title="">keyword5</a></li>
+                <li><a href="#" title="">keyword6</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <h3>실습예제 네이버 뉴스 </h3>
+
+    <div class="naver_news">
+        <select name="" id="">
+            <option value="">전체언론사</option>
+            <option value=""><b>구독언론사</b>보기</option>
+        </select>
+        <a href="#" title="">연합뉴스 &bull; </a>
+        <ul class="news_list">
+            <li><a href="#" title=" 반도체 선제투자·지원 중요성 강조">尹, 박정희·이병철 언급하며 반도체 선제투자·지원 중요성 강조</a></li>
+            <li><a href="#" title="반도체 투자 세액공제 효력 연장">尹 "반도체 투자 세액공제 효력 연장…R&D 예산 대폭 증액"</a></li>
+            <li><a href="#" title="반도체클러스터">622조 투입 반도체클러스터 '세계 최대·최고'로…정부 총력지원</a></li>
+            <li><a href="#" title="AI반도체 1등">"AI반도체 1등"…판교 R&D 허브 조성·연구인력 2배 이상 확충</a></li>
+            <li><a href="#" title="반도체 제조공장 5기→6기 배치">용인 산단에 반도체 제조공장 5기→6기 배치…2030년 첫 가동</a></li>
+            <li><a href="#" title="반도체 공급망 자립률 50%로">반도체 공급망 자립률 50%로·'1조 클럽' 소부장기업 10개로</a></li>
+        </ul>
+        <a href="#" title="">뉴스스탠드</a>
+        <a href="#" title="">뉴스홈</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_애니메이트 메서드 복습하기</title>
+    <style>
+        .box {
+            border: 3px solid #000;
+            width: 478px;
+            height: 278px;
+            margin: 0px auto;
+            position: relative;
+        }
+
+        .title,
+        .face {
+            position: absolute;
+        }
+
+        .face {
+            right: 0px;
+            bottom: -300px;
+            /* bottom: 0px; */
+            opacity: 0;
+        }
+
+        .title {
+            /* left: 30px; */
+            left: -140px;
+            top: 60px;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>01_애니메이트 메서드 복습하기</h2>
+    <article class="box">
+        <h3><img src="./images/jobs_text.gif" alt="스티브잡스" class="title"></h3>
+        <img src="./images/jobs.png" alt="스티브잡스 얼굴" class="face">
+    </article>
+
+        <!-- 제이쿼리 라이브러리 연결하기 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const t = $('.title')
+            const f = $('.face')
+
+            t.animate({'left':'30px','opacity':'1'},500)
+            f.delay(100).animate({'bottom':'0px','opacity':'1'},500)
+            // delay를 작성하면 시간차를 둘 수 있다. delay 100은 0.1초 차이
+        })
+    </script>
+</body>
+
+</html>

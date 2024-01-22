@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제_쿠팡이미지</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #coupang {
+            margin: 0px auto;
+            width: 325px;
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 span {
+            color: rgb(209, 65, 65);
+        }
+
+        #coupang img{
+            padding-top: 20px;
+        }
+
+        input[type=button] {
+            border: none;
+            font-size: 45px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+            position: absolute;
+            top: 50%;
+        }
+
+        input[id="right_btn"] {
+            right: 20px;
+        }
+        input[id="left_btn"] {
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <article id="coupang">
+        <h2><span>hot! trend </span><br> 추천 광고상품</h2>
+        <input type="button" value=">" id="right_btn">
+        <input type="button" value="<" id="left_btn">
+        <img src='./images3/product01.png' alt="쿠팡이미지" id="product">
+
+    </article>
+
+    <script>
+        // 1.배열 객체 선언하기
+        let img = ['product01', 'product02', 'product03', 'product04', 'product05', 'product06', 'product07', 'product08', 'product09', 'product10', 'product11', 'product12', 'product13', 'product14', 'product15', 'product16', 'product17', 'product18']
+        let r_btn = document.getElementById('right_btn')
+        let l_btn = document.getElementById('left_btn')
+        let n = Math.ceil(Math.random() * 17)
+        let product = document.getElementById('product')
+
+        // 출력확인
+        console.log(img[n])
+        // console.log(img[0])
+
+        product.src = './images3/' + img[n] + '.jpg'
+        if (n == 0 || n == 7 || n == 9 || n == 12) { product.src = './images3/' + img[n] + '.png' }
+
+        r_btn.addEventListener('click', function () {
+            if (n == 17) {
+                n = 0
+            } else {
+                n++;
+            }
+            product.src = './images3/' + img[n] + '.jpg'
+            if (n == 0 || n == 7 || n == 9 || n == 12) { product.src = './images3/' + img[n] + '.png' }
+        })
+
+        l_btn.addEventListener('click', function () {
+            if (n == 0) {
+                n = 17
+            } else {
+                n--;
+            }
+            product.src = './images3/' + img[n] + '.jpg'
+            if (n == 0 || n == 7 || n == 9 || n == 12) { product.src = './images3/' + img[n] + '.png' }
+        })
+    </script>
+</body>
+
+</html>

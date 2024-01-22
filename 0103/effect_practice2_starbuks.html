@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css">
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <title>실습예제2_스타벅스 모바일 2단내비게이션 구현하기</title>
+    <style>
+        h2,
+        p {
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .gnb {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7)
+        }
+
+        .gnb>ul {
+            width: 400px;
+            margin: 0px auto;
+        }
+
+        .gnb>ul>li {
+            text-indent: 10px;
+            clear: right;
+            border-bottom: 1px solid #fff;
+        }
+
+        .gnb>ul>li>a {
+            display: block;
+            line-height: 40px;
+            font-size: 1rem;
+            background-color: rgb(5, 143, 97);
+        }
+
+        .gnb>ul>li a:hover{
+            text-decoration: underline;
+        }
+        .fa-angle-down {
+            float: right;
+            font-size: 1.3rem;
+            padding: 10px 8px;
+        }
+
+        .act{
+            transform:rotate(180deg) translateX(-10px) !important
+            /* 패딩값으로 좌측으로 치우쳐져 원래 자리를 찾게 해줌 */
+        }
+        /* 서브메뉴 서식 */
+
+        .sub {
+            background: #000;
+            display: none;
+            width: 100%;
+        }
+
+        .sub>li>a {
+            line-height: 36px;
+            font-size: 0.95rem;
+            display: block;
+        }
+    </style>
+            <!-- 제이쿼리 라이브러리 -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    
+                    // 1. 변수선언
+                    // 마우스로 메인메뉴를 먼저 클릭할거고, 메인메뉴가 동작이 되어야 해서 메인메뉴를 먼저 변수로 만든다.    
+                    const mnu = $('.gnb>ul>li>a');
+        
+                    // 2. 메뉴 클릭시 해당 서브 나오게 하기;
+                    mnu.click(function(){
+                        // alert('클릭');
+                        // 1. 서브메뉴 기능구현
+                        // $(this).next().slideToggle();
+                        // $(this).find('i').toggleClass('act')
+
+                        // 2. 아코디언 메뉴 : 하나는 무조건 펼쳐져 있어야한다.
+                        $('.sub').slideUp();//모든 서브메뉴 위로 접고
+                        $(this).next().slideDown();
+                        $('i').removeClass('act');//모든 i 태그에 act 서식을 제거하고
+                        $(this).find('i').addClass('act'); //선택한 메뉴의 자손i태그에 act서식을 적용한다.
+                    }); 
+        
+
+                    
+                });
+            </script>
+</head>
+
+<body>
+    <h2>실습예제2_스타벅스 모바일 2단내비게이션 구현하기</h2>
+    <p>2단목록을 작성하여 스타벅스 모바일 메뉴를 클릭시 서브메뉴 펼치기/접기 </p>
+
+    <nav class="gnb">
+        <ul>
+            <li><a href="#" title="">메인메뉴1 <i class="fas fa-angle-down"></i>
+                </a>
+                <ul class="sub">
+                    <li><a href="#" title="">서브메뉴1</a></li>
+                    <li><a href="#" title="">서브메뉴2</a></li>
+                    <li><a href="#" title="">서브메뉴3</a></li>
+                </ul>
+            </li>
+            <li><a href="#" title="">메인메뉴2 <i class="fas fa-angle-down"></i></a>
+                <ul class="sub">
+                    <li><a href="#" title="">서브메뉴1</a></li>
+                    <li><a href="#" title="">서브메뉴2</a></li>
+                    <li><a href="#" title="">서브메뉴3</a></li>
+                </ul>
+            </li>
+            <li><a href="#" title="">메인메뉴3 <i class="fas fa-angle-down"></i></a>
+                <ul class="sub">
+                    <li><a href="#" title="">서브메뉴1</a></li>
+                    <li><a href="#" title="">서브메뉴2</a></li>
+                    <li><a href="#" title="">서브메뉴3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <h3>모바일 메뉴목록을 응용하여 '아코디언'메뉴 또는 '질문과 답변'목록도 개발 가능함.</h3>
+</body>
+
+</html>

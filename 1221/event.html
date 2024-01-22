@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_자바스크립트 기초_이벤트(event)</title>
+    <style>
+        #modal * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #modal {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            display: none;
+            transition: 0.5s;
+        }
+
+        #modal .modal_inner {
+            width: 380px;
+            height: 430px;
+            margin: 0px auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #modal .modal_inner p {
+            background-color: #fff;
+            height: 50px;
+            transform: translateY(-5px);
+            line-height: 30px;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 13px;
+
+        }
+
+        #modal .modal_inner p input:first-child {
+            box-shadow: -2px -3px 2px rgba(107, 107, 107, 0.2) inset;
+            transform: translateY(20%);
+        }
+
+        #modal .modal_inner p input:last-child {
+            border: none;
+            background: none;
+            float: right;
+            line-height: 30px;
+            padding: 0px 14px;
+            cursor: pointer;
+        }
+
+        #banner{
+            width: 390px; height: 158px;
+            border: 3px solid #000;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>01_자바스크립트 기초 이벤트(event)</h2>
+    <p>EVENT : 특별한 솽황, 행사 사건</p>
+    <p>웹페이지에서는 클릭 오버 아웃 드래그 더블클릭 스크롤 키보드 등의 행위를 했을 때 일어나는 사건을 이벤트 라고 한다.</p>
+
+    <h3> 1. 이벤트의 종류</h3>
+    <ul>
+        <li>onclick(); - 마우스로 해당요소를 클릭했을때 이벤트 발생</li>
+        <li>ondblclick(); - 마우스로 해당요소를 더블클릭하였을 때 이벤트 발생</li>
+        <li>onkeydown(); - 키보드를 눌렀을때 이벤트 발생</li>
+        <li>onkeypress(); - 키보드를 눌렀다가 뗐을때 이벤트 발생</li>
+        <li>onkeyup(); - 키보드를 놓았을 때 이벤트 발생</li>
+        <li>onmousedown(); - 마우스로 버튼을 눌렀을 때 이벤트 발생</li>
+        <li>onmouseup(); - 마우스로 버튼을 놓았을 때 이벤트 발생</li>
+        <li>onmouseover(); - 마우스로 버튼을 올렸을 때 이벤트 발생</li>
+        <li>onmouseout(); - 마우스로 버튼을 올렸다가 떼었을 때 이벤트 발생</li>
+    </ul>
+
+    <h3> 모달 윈도 == 팝업레이어</h3>
+    <p>모달 윈도(modal window)는 사용자 인터페이스(UI)디자인 개념에서 자식윈도우에서 부모 윈도우로 돌아가기 전에 사용자의
+        상호동작을 요구하는 창을 말한다.
+    </p>
+    <p>모달 윈도우는 부모창을 어둡게하고 자식요소가 화면의 가운데 중앙에 배치하도록 하며, 오른쪽 상단에
+        '닫기'버튼을 만들어서 닫을 수 있도록 한다.
+    </p>
+
+
+    <div id="modal">
+        <div class="modal_inner">
+            <a href="#" title="이벤트 바로가기">
+                <img src="./images/banner.jpg" alt="광고배너">
+            </a>
+            <p>
+                <input type="checkbox" id="ch_btn">
+                <label for="ch_btn">오늘 하루 열지 않음</label>
+                <input type="button" value="닫기" id="c_btn">
+            </p>
+        </div>
+    </div>
+
+    <div id="banner">
+        <img src="./images/mbn04.png" alt="" id="b_img">
+    </div>
+
+    <script>
+        // 1. 변수선언
+        let modal = document.getElementById('modal');
+
+        // 2. 문서가 로딩이 끝나면 modal이 보이도록 한다.
+        window.onload = function(){
+            modal.style.display='block'
+        }
+
+        // 3. 닫기버튼을 클릭시 #modal을 숨긴다.
+        c_btn.addEventListener('click',function(){
+            // modal.style.display='none';
+            //시간에 맞춰 함수를 실행함 부드럽게 없애기 , modal transition도 넣어야한다.
+            modal.style.opacity='0'
+            setTimeout(display_none, 1000);
+        });
+        function display_none(){
+      modal.style.display='none'; //1번
+    }
+
+    // 배너이미지 (#b_img)에 마우스 오버시 이미지 변경하고 다시 마우스 아웃시 원래이미지 나오게 하기
+    //1.변수선언
+    const b_img=document.getElementById('b_img');
+
+    b_img.addEventListener('mouseover',function(){
+        this.src='./images/mbn04ov.png'
+    })
+    b_img.addEventListener('mouseout',function(){
+        this.src='./images/mbn04.png';
+    });
+    
+    // 배너에 마우스 올리면 테두리 빨강, 아웃시 검정
+    const ba = document.getElementById('banner');
+
+    ba.addEventListener('mouseover',function(){
+        banner.style.border='3px solid #f00'
+    })
+    
+    ba.addEventListener('mouseout',function(){
+        banner.style.border="3px solid #000"
+    })
+    </script>
+    
+</body>
+
+</html>

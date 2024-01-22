@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제 투어</title>
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <link href="./css/layout.css" rel="stylesheet" type="text/css">
+    <!-- 아이콘폰트주소 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" tyep="text/css">
+</head>
+
+<body>
+    <header><h1><img src="./img/ico-hanatour-logo2.png" alt="하나투어로고"></h1></header>
+    <main>
+        <article>
+            <img src="./img/europe1.jpg" alt="유럽사진1" id="europe">
+            <span id="page"></span>
+                <span class="fas fa-angle-left" id="left_btn"></span>
+                <span class="fas fa-angle-right" id="right_btn"></span>
+            <div class="right">
+                <h2>[출발확정] 동유럽 3국 9일 #부다페스트 직항 #프라하 시내호텔 #맛집체험 #할슈타트 #판도르프 아웃렛 #체코,오스트리아,헝가리</h2>
+        
+                <p><i class="fas fa-bullhorn"></i> 부다페스트 직항으로 떠나는 합리적인 가격의 여행! 동유럽 여행의 백미 체코, 오스트리아, 헝가리의 이름 난 명소와 아름다운 할슈타트와 체스키크룸로프 방문이 포함된 여유로운 일정입니다. </p>
+                <a href="#" title="#다이닝/미식">#다이닝/미식</a>
+                <a href="#" title="#관광+자유">#관광+자유</a>
+                <div class="comment">
+                    <i class="fas fa-star"></i>
+                    <span> 4.5</span>
+                    <i class="	fas fa-comment"></i>
+                    <span> 611</span>
+                </div>
+                <div class="foot">
+                    <img src="./img/ico_date.png" alt="7박 9일">
+                    <span>7박 9일</span>
+                    <img src="./img/ico_flight01.png" alt="외국항공">
+                    <span>외국항공</span>
+                    <img src="./img/ico_shopping02.png" alt="쇼핑없음">
+                    <span>쇼핑없음</span>
+                    <img src="./img/ico_group.png" alt="단체여행">
+                    <span>단체여행</span>
+                    <img src="./img/ico_guide.png" alt="인솔자동행">
+                    <span>인솔자동행</span>
+                    <img src="./img/ico_cost02.png" alt="가이드경비없음">
+                    <span>가이드경비없음</span>
+                    <img src="./img/ico_optiontour01.png" alt="선택관광있음">
+                    <span>선택관광있음</span>
+                </div>
+                <div class="foot2">
+                    <span>출발확정</span>
+                    <span>항공예정</span>
+                    <span>일정예정</span>
+                    <span>호텔예정</span>
+                    <span>가격예정</span>
+                </div>
+                <p>
+                    성인 1인<br>
+                <span>3,299,000</span> 원
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // 변수선언과 값입력
+        let n = 1;
+        const r_btn = document.getElementById('right_btn')
+        const l_btn = document.getElementById('left_btn')
+        // 페이지번호 변수선언
+        const page_n = document.getElementById('page')
+
+        // 페이지번호 출력
+        page_n.innerHTML = n + '/12'
+
+        // 좌우버튼 클릭시 각각 해당하는 함수 호출하여 이미지 변경
+        l_btn.addEventListener('click',function(){
+            // window.alert('왼쪽버튼클릭')
+            if(n==1){
+                n=12;
+            }else{
+                n--;
+            }
+        })
+            
+        r_btn.addEventListener('click',function(){
+            // window.alert('오른쪽버튼 클릭')
+            if(n==12){
+                n=1;
+            }else{
+                n++;
+            }
+        })
+    </script>
+</body>
+</html>
