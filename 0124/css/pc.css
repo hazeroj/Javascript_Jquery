@@ -238,25 +238,24 @@
         text-decoration: none;
     }
 
-    .tab_con_wrap>li>div {
+    .tab_con_wrap>li>div{
         position: absolute;
-        margin-left: 30px;
+        width: 1160px;
         height: 338px;
         left: 0px;
         top: 150px;
         display: none;
     }
 
-
-    .tab_con_wrap>li>div>h3 {
+    
+    .tab_con_wrap>li>div>h3{
         font-size: 20px;
     }
-
-    .tab_con_wrap>li>div>p {
+    
+    .tab_con_wrap>li>div>p{
         line-height: 25px;
     }
-
-    .tab_con_wrap>li>div>span {
+    .tab_con_wrap>li>div>span{
         font-size: 12px;
         line-height: 60px;
     }
@@ -397,66 +396,5 @@
         height: 100%;
         width: 50%;
     }
-
-    /* 갤러리 클릭시 모달창 나오게 하기 */
-    .modal {
-        background-color: rgba(0, 0, 0, 0.7);
-        position: relative;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 50;
-    }
-
-    .modal .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .modal .center h3 {
-        text-align: center;
-        color: #fff;
-        font-size: 1.5rem;
-    }
-
-    .modal .center img {
-        display: block;
-        max-height: 70vh;
-    }
-
-    .modal .center .fas {
-        color: #fff;
-        font-size: 2rem;
-        position: absolute;
-
-    }
-
-    .modal .center .fa-times {
-        right: -15%;
-        top: -5%;
-    }
-
-    .modal .center .fa-angle-left {
-        top: 50%;
-        left: -10%;
-    }
-
-    .modal .center .fa-angle-right {
-        top: 50%;
-        right: -10%;
-    }
-
-    .modal .center span {
-        color: #fff;
-        font-size: 1.2rem;
-        margin: 10px;
-        text-align: center;
-        display: block;
-    }
-
 
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미에로화이버 반응형웹</title>
+    <!-- 초기화 -->
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <!-- 공통서식(글꼴,크기,색상,링크) -->
+    <link href="./css/base.css" rel="stylesheet" type="text/css">
+    <!-- pc화면 해상도일 때 적용되는 서식 -->
+    <link href="./css/pc.css" rel="stylesheet" type="text/css">
+    <!-- tablet화면 해상도일 때 적용되는 서식 -->
+    <link href="./css/tablet.css" rel="stylesheet" type="text/css">
+    <!-- mobile화면 해상도일 때 적용되는 서식 -->
+    <link href="./css/mobile.css" rel="stylesheet" type="text/css">
+    <!-- 아이콘폰트 주소 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css">
+
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="./script/miero.js"></script>
+</head>
+
+<body>
+    <!-- 헤더영역시작 -->
+    <header>
+        <h1><a href="index.html" title="메인페이지로바로가기"><img src="./images/logo2.png" alt="상단로고"></a></h1>
+
+        <!-- 모바일 버전에서 나오는 토글버튼(햄버거) 미리 만든다. -->
+        <div id="toggle">
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+        </div>
+
+        <!-- 메인메뉴 내비게이션 -->
+        <nav class="gnb">
+            <ul>
+                <li><a href="javascript:void(0)" title="미에로">미에로<i class="fas fa-angle-down"></i></a>
+                    <ul class="sub">
+                        <li><a href="javascript:void(0)" title="브랜드스토리">브랜드 스토리</a></li>
+                        <li><a href="javascript:void(0)" title="식이섬유스토리">식이섬유 스토리</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)" title="제품소개">제품소개<i class="fas fa-angle-down"></i></a>
+                    <ul class="sub">
+                        <li><a href="javascript:void(0)" title="미에로화이버">미에로화이버</a></li>
+                        <li><a href="javascript:void(0)" title="미에로화이버 SPARKLING ZERO">미에로화이버 SPARKLING ZERO</a></li>
+                        <li><a href="javascript:void(0)" title="헬씨올리고">헬씨올리고</a></li>
+                        <li><a href="javascript:void(0)" title="헬씨올리고 프로바이오틱스">헬씨올리고 프로바이오틱스</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)" title="미에로스토리">미에로스토리<i class="fas fa-angle-down"></i></a>
+                    <ul class="sub">
+                        <li><a href="javascript:void(0)" title="TV광고">TV광고</a></li>
+                        <li><a href="javascript:void(0)" title="인쇄광고">인쇄광고</a></li>
+                        <li><a href="javascript:void(0)" title="프로모션">프로모션</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)" title="미에로이벤트">미에로이벤트<i class="fas fa-angle-down"></i></a>
+                    <ul class="sub">
+                        <li><a href="javascript:void(0)" title="진행중인 이벤트">진행중인 이벤트</a></li>
+                        <li><a href="javascript:void(0)" title="당첨자발표">당첨자발표</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)" title="공지사항">공지사항</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인영역시작 -->
+    <main>
+        <article class="visual">
+            <h2>메인슬라이드</h2>
+            <div class="slide1">
+                <span>이제 짜릿하게 즐기자! <br>
+                    미에로화이바 스파클링 제로</span>
+                <img src="./images/visual01.jpg" alt="">
+            </div>
+            <div class="slide2">
+                <span>마시는 식이섬유 <br>
+                    미에로화이바</span>
+                <img src="./images/visual03.jpg" alt="">
+            </div>
+            <div class="slide3">
+                <img src="./images/visual02.jpg" alt="">
+            </div>
+
+            <!-- 공통 ul구성요소 sns 콘트롤버튼 좌우버튼 -->
+            <!-- sns 아이콘 -->
+            <ul class="sns">
+                <li><a href="javascript:void(0)" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="javascript:void(0)" title="instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="javascript:void(0)" title="youtube"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+
+            <!-- 좌우버튼 -->
+            <ul class="s_btn">
+                <li><img src="./images/left.png" alt="이전버튼"></li>
+                <li><img src="./images/right.png" alt="다음버튼"></li>
+            </ul>
+
+            <!-- 콘트롤버튼 -->
+            <ul class="ctrl_btn">
+                <li class="on">&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ul>
+        </article>
+
+        <!-- 2. 뉴스컨텐츠 -->
+        <section class="news_con">
+            <article></article>
+            <article></article>
+        </section>
+
+        <!-- 3. 탭콘텐츠 -->
+        <section class="tab_con">
+            <article>
+                <h2>당신이 몰랐던 식이섬유</h2>
+                <ul class="tab_con_wrap">
+                    <li>
+                        <a href="javascript:void(0)" title="식이섬유란" class="act">식이섬유란?</a>
+                        <div class="con01">
+                            <h3>식이섬유란?</h3>
+                            <p>사람의 소화효소로 분해되지 않는 성분, 몸 속의 과다한 양분흡수를 막아주고,<br> 장의 리듬을 조
+                                절하며,음식물이 장 속에 머무는 시간을 단축시키는 등 <br>현대 식생활에 꼭 필요한 물질로 제 7
+                                의 영양소로 주목 받고 있음</p>
+                            <span>※ 출처 : 파워푸드 슈퍼푸드 사전</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" title="식이섬유 기능">식이섬유 기능</a>
+                        <div class="con02">
+                            <h3>식이섬유의 기능</h3>
+                            <p>1.배설활동 촉진, 변비 예방<br>
+                                2.대사질환에 효과적<br>
+                                3.콜레스테롤 감소</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" title="식이섬유를 섭취하려면">식이섬유를 섭취하려면?</a>
+                        <div class="con03">
+                            <h3>식이섬유를 섭취하려면?</h3>
+                            <img src="./images/식이섬유섭취.png" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 4. 인기제품 -->
+        <section class="best_product">
+            <article></article>
+        </section>
+
+        <!-- 5. 이벤트 1170*256 img-746*256-->
+        <section class="event">
+            <h2>미에로화이바 EVENT</h2>
+            <article class="e_slide">
+                <div class="es_wrap">
+                    <div><a href="javascript:void(0)" title=""><img src="./images/event01.png" alt="">
+                            <div class="e_txt">
+                                <span>종료</span>
+                                <h3>[미에로화이바 스파클링 제로 케미 이…</h3>
+                                <p>2023.05.09 ~ 2023.05.15</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div><a href="javascript:void(0)" title=""><img src="./images/event02.png" alt="">
+                            <div class="e_txt">
+                                <span>종료</span>
+                                <h3>[미에로화이바 이모지 이벤트]</h3>
+                                <p>2023.04.18 ~ 2023.04.24</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div><a href="javascript:void(0)" title=""><img src="./images/event03.jpg" alt="">
+                            <div class="e_txt">
+                                <span>종료</span>
+                                <h3>[미에로화이바 즐기는 법 이벤트]</h3>
+                                <p>2023.03.09 ~ 2023.03.15</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            <i class="fas fa-angle-left"></i>
+            <i class="fas fa-angle-right"></i>
+
+        </section>
+
+        <!-- 6. 스토리 갤러리 -->
+        <section class="gallery">
+
+            <article class="g_wrap">
+                <div class="main">
+                    <h2>미에로화이바 Girl 스토리</h2>
+                    <ul class="miero">
+                        <li><a href="javascript:void(0)" title="1">
+                                <img src="./images/mcon5_1.jpg" alt="1"></a></li>
+                        <li class="img"><a href="javascript:void(0)" title="">
+                            <img src="./images/mcon5_7.jpg" alt="2"
+                                    class="he"></a>
+                        </li>
+                        <li><a href="javascript:void(0)" title="3"><img src="./images/mcon5_12.png" alt="3"
+                                    class="dalgo"></a></li>
+                        <li><a href="javascript:void(0)" title="4"><img src="./images/mcon5_10.png" alt="4"></a></li>
+                        <!-- <li>5</li> -->
+                        <li><a href="javascript:void(0)" title="5"><img src="./images/mcon5_13.png" alt="5"
+                                    class="he"></a></li>
+                        <li><a href="javascript:void(0)" title="6"><img src="./images/mcon5_9.jpg" alt="6"></a></li>
+                        <li><a href="javascript:void(0)" title="7"><img src="./images/mcon5_11.png" alt="7"></a></li>
+                        <li><a href="javascript:void(0)" title="8"><img src="./images/mcon5_2.jpg" alt="8"></a></li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- 푸터영역시작 -->
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>
