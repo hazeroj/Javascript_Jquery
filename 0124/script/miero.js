@@ -181,9 +181,9 @@ $(document).ready(function () {
 
         // li태그의 인덱스 번호를 구하여 인덱스가 2라면 부모박스 높이를 키우고 아니면 원래높이로 설정함
         if (n == 2) {
-            $('.tab_con article').height(900);
+            $('.tab_con article').height(1200);
         } else {
-            $('.tab_con article').height(500);
+            $('.tab_con article').height(850);
         }
     })
 
@@ -202,7 +202,6 @@ $(document).ready(function () {
     })
 
 
-
     // 이벤트서식
 
     const eslide = $('.es_wrap')
@@ -214,13 +213,13 @@ $(document).ready(function () {
 
     // 왼쪽으로 1200픽셀 이동하여 1번이 가운데 배치가 되게 한다.
 
-    eslide.css('margin-left', '-1200px')
+    eslide.css('margin-left', '-100%')
 
     // moveleft함수
     function moveLeft() {
-        eslide.animate({ 'margin-left': '-2400px' }, 500, function () {
+        eslide.animate({ 'margin-left': '-200%' }, 500, function () {
             $('.es_wrap>div:first-child').insertAfter('.es_wrap>div:last-child')
-            eslide.css('margin-left', '-1200px')
+            eslide.css('margin-left', '-100%')
         })
     }
 
@@ -230,9 +229,10 @@ $(document).ready(function () {
     function moveRight() {
         eslide.animate({ 'margin-left': '0px' }, 500, function () {
             $('.es_wrap>div:last-child').insertBefore('.es_wrap>div:first-child')
-            eslide.css('margin-left', '-1200px')
+            eslide.css('margin-left', '-100%')
         })
     }
+
     // 좌측버튼클릭시
     es_lbtn.click(function () {
         clearInterval(Timer2);
@@ -322,6 +322,23 @@ $(document).ready(function () {
 
     })
 
+    // 탑버튼
+    // 윈도우세로 스크롤값을 구하여, top버튼 보이게하고 그렇지 않으면 숨기게한다
+    $(window).scroll(function () {
+        let s_pos = $(this).scrollTop();
+        console.log(s_pos);
+
+        if (s_pos >= 800) {
+            $('footer .t_btn').fadeIn();
+        } else { $('footer .t_btn').fadeOut(); }
+    })
+
+    // 탑버튼 최상단으로 올리기
+    $(' footer .t_btn').click(function () {
+        $('html, body').animate({ 'scrollTop': '0px' }, 500)
+
+        return false;
+    })
 
 
 });

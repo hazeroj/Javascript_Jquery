@@ -200,6 +200,77 @@
         cursor: pointer;
     }
 
+    /* 2. 뉴스콘텐츠서식 */
+    .news_con {
+        width: 1200px;
+        display: flex;
+        margin: 50px auto;
+
+    }
+
+    .news_con>article {
+        height: 500px;
+        margin-bottom: 20px;
+    }
+
+    .news_con article>h2 {
+        font-size: 43px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .news_con article>h2>span {
+        display: block;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .youtube {
+        width: 665px;
+    }
+
+    .news_con article>h2>img {
+        width: 280px;
+    }
+
+
+    .news_con article>iframe {
+        width: 100%;
+        height: 340px;
+    }
+
+
+
+
+    /* 2-2 뉴스리스트 */
+    .news_con>.news_list {
+        width: 535px;
+    }
+
+    .news_list h2 {
+        padding-left: 50px;
+    }
+
+    .news_list .fa-circle {
+        color: #ff9012;
+        padding-right: 6px;
+        font-size: 16px;
+
+    }
+
+    .news_list li {
+        line-height: 250%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    }
+
+    .news_list li a {
+        font-size: 16px;
+    }
+
+
     .on {
         background-color: #ca6c01 !important;
     }
